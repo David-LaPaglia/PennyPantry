@@ -1,0 +1,1034 @@
+/* Smart Grocery List App Styles */
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #2196F3;
+  --accent-color: #FF9800;
+  --text-color: #333;
+  --light-gray: #f5f5f5;
+  --background-color: #ffffff;
+  --shadow: 0 2px 5px rgba(0,0,0,0.1);
+  --border-radius: 10px;
+  --font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Navigation Styles */
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding: 15px 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
+
+.nav-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.nav-tab i {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.nav-tab.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Card Styles */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+/* Search Bar Styles */
+.search-container {
+  padding: 15px 20px;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: var(--shadow);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-gray);
+  border-radius: 20px;
+  padding: 8px 15px;
+  position: relative;
+}
+
+.search-icon {
+  color: #888;
+  margin-right: 10px;
+}
+
+.voice-search {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.voice-search.pulsing {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#item-search {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  font-family: var(--font-family);
+}
+
+/* Grocery List Styles */
+.grocery-list {
+  padding: 0;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  display: flex;
+  align-items: left;
+  flex: 1;
+}
+
+.item-checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  margin-left: 5px;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.item-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price-value {
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.price-value.best-price {
+  color: var(--primary-color);
+  font-weight: 700;
+  position: relative;
+}
+
+/* Savings Badges */
+.savings-badge, .best-price-badge, .coupon-badge {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background-color: #FF9800;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: pulse-subtle 2s infinite;
+}
+
+.savings-badge i, .best-price-badge i, .coupon-badge i {
+  margin-right: 5px;
+  font-size: 0.8rem;
+}
+
+.save-amount {
+  margin-right: 4px;
+  font-weight: bold;
+}
+
+.save-at {
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.savings-badge.big-savings {
+  background-color: #F44336;
+  animation: pulse-strong 2s infinite;
+}
+
+.best-price-badge {
+  background-color: var(--primary-color);
+}
+
+.coupon-badge {
+  background-color: #2196F3;
+}
+
+@keyframes pulse-subtle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-strong {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.add-item {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+/* Store Comparison Styles */
+.store-comparison {
+  margin-top: 20px;
+}
+
+.store-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.store-info {
+  display: flex;
+  align-items: center;
+}
+
+.store-logo {
+  width: 50px;
+  height: 50px;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.store-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-name {
+  font-weight: bold;
+}
+
+.store-distance {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.store-price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.store-price.best-deal {
+  color: #F44336;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.store-savings-container {
+  display: flex;
+  align-items: center;
+  background-color: #f0f8f0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.store-savings-container.medium-savings {
+  background-color: #fff8e1;
+}
+
+.store-savings-container.best-savings {
+  background-color: #fbe9e7;
+  padding: 6px 12px;
+  border: 1px dashed #F44336;
+  position: relative;
+}
+
+.savings-icon {
+  margin-right: 6px;
+  color: var(--primary-color);
+}
+
+.store-savings-container.medium-savings .savings-icon {
+  color: #FF9800;
+}
+
+.store-savings-container.best-savings .savings-icon {
+  color: #F44336;
+}
+
+.store-savings {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.store-savings-container.medium-savings .store-savings {
+  color: #FF9800;
+}
+
+.store-savings-container.best-savings .store-savings {
+  color: #F44336;
+  font-size: 1rem;
+}
+
+.best-deal-tag {
+  background-color: #F44336;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse-strong 2s infinite;
+}
+
+/* Rewards & Coupons Styles */
+.coupon-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent-color);
+}
+
+.coupon-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-store {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.coupon-discount {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.coupon-description {
+  font-size: 0.9rem;
+}
+
+.coupon-expiry {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.apply-coupon {
+  padding: 8px 15px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Price Tracker Styles */
+.tracked-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding-right: 15px;
+}
+
+.item-price-range {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.price-history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.price-history {
+  width: 180px;
+  height: 60px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.price-timestamps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.65rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+.price-alert {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-alert.price-drop {
+  background-color: #F44336;
+  animation: pulse-subtle 2s infinite;
+}
+
+.price-alert.price-stable {
+  background-color: #4CAF50;
+}
+
+.price-alert.price-rise {
+  background-color: #FF9800;
+}
+
+.price-alert::before {
+  margin-right: 4px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.price-alert.price-drop::before {
+  content: "\f063";
+}
+
+.price-alert.price-stable::before {
+  content: "\f0ec";
+}
+
+.price-alert.price-rise::before {
+  content: "\f062";
+}
+
+/* Store Locator Styles */
+.map-container {
+  height: 200px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.map-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+}
+
+.store-list {
+  margin-top: 20px;
+}
+
+.inventory-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.in-stock {
+  background-color: var(--primary-color);
+}
+
+.low-stock {
+  background-color: var(--accent-color);
+}
+
+.out-stock {
+  background-color: #f44336;
+}
+
+/* Budget Insights Styles */
+.budget-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.budget-card {
+  flex: 1;
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin: 0 5px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.budget-card:first-child {
+  margin-left: 0;
+}
+
+.budget-card:last-child {
+  margin-right: 0;
+}
+
+.budget-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.budget-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.spent {
+  color: var(--text-color);
+}
+
+.saved {
+  color: var(--primary-color);
+}
+
+.remaining {
+  color: var(--secondary-color);
+}
+
+.budget-chart {
+  height: 200px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+}
+
+.budget-suggestions {
+  margin-top: 20px;
+}
+
+.suggestion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-swap {
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-arrow {
+  margin: 0 10px;
+  color: var(--primary-color);
+}
+
+.suggestion-savings {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Bonus Features Styles */
+.bonus-features {
+  margin-top: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f4ff;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.feature-icon.student {
+  background-color: #fff4e0;
+  color: #FF9800;
+}
+
+.feature-icon.eco {
+  background-color: #f0f9f0;
+  color: var(--primary-color);
+}
+
+.feature-icon.group {
+  background-color: #f7f0ff;
+  color: #9C27B0;
+}
+
+.feature-info {
+  flex: 1;
+}
+
+.feature-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.feature-description {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  width: 90%;
+  max-width: 600px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.modal-header {
+  padding: 15px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.modal-header h2 i {
+  margin-right: 10px;
+}
+
+.close-modal {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 100px;
+  font-family: var(--font-family);
+  resize: none;
+}
+
+.recipe-options {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.option {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.option input {
+  margin-right: 8px;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  font-family: var(--font-family);
+  margin-bottom: 20px;
+}
+
+.secondary-button {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+.recipe-preview {
+  background-color: var(--light-gray);
+  padding: 15px;
+  border-radius: var(--border-radius);
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.recipe-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.cost-estimate {
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.ingredients-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.ingredients-list li:last-child {
+  border-bottom: none;
+}
+
+.add-to-list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.7rem;
+}
+
+.nav-item i {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.nav-item.active {
+  color: var(--primary-color);
+}
+
+.screen {
+  display: none;
+  padding-bottom: 70px; /* Space for bottom nav */
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .budget-summary {
+    flex-direction: column;
+  }
+  
+  .budget-card {
+    margin: 0 0 10px 0;
+  }
+}
