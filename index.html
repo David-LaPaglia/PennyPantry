@@ -2,50 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Grocery List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Penny Pantry - A smart grocery list app that helps you save money by comparing prices and finding the best deals">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Penny Pantry - Smart Grocery Shopping</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="images/icon-192x192.png">
 </head>
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <div class="header-content">
-            <div class="app-title">Penny Pantry</div>
-            <div class="user-profile">JD</div>
+            <h1 class="app-title">Penny Pantry</h1>
+            <button class="user-profile" aria-label="User profile">JD</button>
         </div>
     </header>
 
     <div class="container">
         <!-- Grocery List Screen -->
-        <div class="screen active" id="grocery-list-screen">
-            <div class="nav-tabs">
-                <a href="#" class="nav-tab active">
-                    <i class="fas fa-list"></i>
+        <main class="screen" id="grocery-list-screen" role="main">
+            <div class="nav-tabs" role="tablist">
+                <a href="#" class="nav-tab active" role="tab" aria-selected="true" id="my-list-tab" aria-controls="my-list-panel">
+                    <i class="fas fa-list" aria-hidden="true"></i>
                     <span>My List</span>
                 </a>
-                <a href="#" class="nav-tab">
-                    <i class="fas fa-route"></i>
+                <a href="#" class="nav-tab" role="tab" aria-selected="false" id="optimize-tab" aria-controls="optimize-panel">
+                    <i class="fas fa-route" aria-hidden="true"></i>
                     <span>Optimize</span>
                 </a>
-                <a href="#" class="nav-tab">
-                    <i class="fas fa-history"></i>
+                <a href="#" class="nav-tab" role="tab" aria-selected="false" id="history-tab" aria-controls="history-panel">
+                    <i class="fas fa-history" aria-hidden="true"></i>
                     <span>History</span>
                 </a>
             </div>
 
             <div class="search-container">
                 <div class="search-bar">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="item-search" placeholder="Search items...">
-                    <i class="fas fa-microphone voice-search"></i>
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    <input type="text" id="item-search" placeholder="Search items..." aria-label="Search grocery items">
+                    <button class="voice-search-btn" aria-label="Search by voice">
+                        <i class="fas fa-microphone voice-search"></i>
+                    </button>
                 </div>
             </div>
 
             <div class="card grocery-list">
                 <div class="list-item">
                     <div class="item-info">
-                        <div class="item-checkbox"></div>
+                        <button class="item-checkbox" aria-label="Mark item as complete" role="checkbox" aria-checked="false"></button>
                         <span class="item-name">Organic Milk (1 gal)</span>
                     </div>
                     <div class="item-price">
@@ -59,7 +65,7 @@
                 </div>
                 <div class="list-item">
                     <div class="item-info">
-                        <div class="item-checkbox"></div>
+                        <button class="item-checkbox" aria-label="Mark item as complete" role="checkbox" aria-checked="false"></button>
                         <span class="item-name">Whole Grain Bread</span>
                     </div>
                     <div class="item-price">
@@ -72,7 +78,7 @@
                 </div>
                 <div class="list-item">
                     <div class="item-info">
-                        <div class="item-checkbox"></div>
+                        <button class="item-checkbox" aria-label="Mark item as complete" role="checkbox" aria-checked="false"></button>
                         <span class="item-name">Chicken Breast (2 lbs)</span>
                     </div>
                     <div class="item-price">
@@ -86,7 +92,7 @@
                 </div>
                 <div class="list-item">
                     <div class="item-info">
-                        <div class="item-checkbox"></div>
+                        <button class="item-checkbox" aria-label="Mark item as complete" role="checkbox" aria-checked="false"></button>
                         <span class="item-name">Apples (bag)</span>
                     </div>
                     <div class="item-price">
@@ -100,7 +106,7 @@
                 </div>
                 <div class="list-item">
                     <div class="item-info">
-                        <div class="item-checkbox"></div>
+                        <button class="item-checkbox" aria-label="Mark item as complete" role="checkbox" aria-checked="false"></button>
                         <span class="item-name">Laundry Detergent</span>
                     </div>
                     <div class="item-price">
@@ -178,8 +184,8 @@
                         <div class="feature-description">Input a recipe, get a shopping list, and find where it's cheapest.</div>
                     </div>
                     <div class="feature-toggle">
-                        <label class="switch">
-                            <input type="checkbox" id="meal-mode-toggle">
+                        <label class="switch" for="meal-mode-toggle">
+                            <input type="checkbox" id="meal-mode-toggle" aria-label="Enable meal mode">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -234,16 +240,18 @@
                 </div>
             </div>
             
-            <div class="add-item">
-                <i class="fas fa-plus"></i>
-            </div>
-            
+            <!-- Add Item Button -->
+            <button class="add-item" aria-label="Add new item">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span class="sr-only">Add Item</span>
+            </button>
+
             <!-- Meal Mode Panel (initially hidden) -->
-            <div class="modal" id="meal-mode-panel">
+            <div class="modal" id="meal-mode-panel" aria-modal="true" role="dialog" aria-labelledby="meal-mode-title" aria-hidden="true">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2><i class="fas fa-utensils"></i> Meal Mode</h2>
-                        <span class="close-modal">&times;</span>
+                        <h2 id="meal-mode-title"><i class="fas fa-utensils" aria-hidden="true"></i> Meal Mode</h2>
+                        <button class="close-modal" aria-label="Close meal mode panel">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="input-group">
@@ -283,10 +291,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
 
         <!-- Rewards & Coupons Screen -->
-        <div class="screen" id="rewards-screen">
+        <main class="screen" id="rewards-screen" role="main">
             <div class="card">
                 <div class="card-title">Available Coupons</div>
                 <div class="coupon-card">
@@ -339,10 +347,10 @@
                     <button class="apply-coupon">Claim</button>
                 </div>
             </div>
-        </div>
+        </main>
 
         <!-- Price Tracker Screen -->
-        <div class="screen" id="price-tracker-screen">
+        <main class="screen" id="price-tracker-screen" role="main">
             <div class="card">
                 <div class="card-title">Items You're Tracking</div>
                 <div class="tracked-item">
@@ -467,10 +475,19 @@
         </div>
 
         <!-- Store Locator Screen -->
-        <div class="screen" id="store-locator-screen">
+        <main class="screen" id="store-locator-screen" role="main">
             <div class="map-container">
-                <div class="map-placeholder">
-                    Interactive Map View
+                <div id="store-map"></div>
+                <div class="map-controls">
+                    <button id="use-my-location" class="map-control-btn" aria-label="Use my location">
+                        <i class="fas fa-location-arrow" aria-hidden="true"></i>
+                    </button>
+                    <button id="zoom-in" class="map-control-btn" aria-label="Zoom in">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <button id="zoom-out" class="map-control-btn" aria-label="Zoom out">
+                        <i class="fas fa-minus" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
 
@@ -550,7 +567,7 @@
         </div>
 
         <!-- Budget Insights Screen -->
-        <div class="screen" id="budget-screen">
+        <main class="screen" id="budget-screen" role="main">
             <div class="budget-summary">
                 <div class="budget-card">
                     <div class="budget-label">Weekly Budget</div>
@@ -601,29 +618,32 @@
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <a href="#" class="nav-item active" data-screen="grocery-list-screen">
-            <i class="fas fa-list"></i>
+    <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-item active" data-screen="grocery-list-screen" aria-label="Grocery list" aria-current="page">
+            <i class="fas fa-list" aria-hidden="true"></i>
             <span>List</span>
         </a>
-        <a href="#" class="nav-item" data-screen="rewards-screen">
-            <i class="fas fa-tag"></i>
+        <a href="#" class="nav-item" data-screen="rewards-screen" aria-label="Rewards and coupons">
+            <i class="fas fa-ticket-alt" aria-hidden="true"></i>
             <span>Rewards</span>
         </a>
-        <a href="#" class="nav-item" data-screen="price-tracker-screen">
-            <i class="fas fa-chart-line"></i>
+        <a href="#" class="nav-item" data-screen="price-tracker-screen" aria-label="Price tracker">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
             <span>Prices</span>
         </a>
-        <a href="#" class="nav-item" data-screen="store-locator-screen">
-            <i class="fas fa-map-marker-alt"></i>
+        <a href="#" class="nav-item" data-screen="store-locator-screen" aria-label="Store locator">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             <span>Stores</span>
         </a>
-        <a href="#" class="nav-item" data-screen="budget-screen">
-            <i class="fas fa-chart-pie"></i>
+        <a href="#" class="nav-item" data-screen="budget-screen" aria-label="Budget insights">
+            <i class="fas fa-piggy-bank" aria-hidden="true"></i>
             <span>Budget</span>
         </a>
-    </div>
+    </nav>
 
     <script src="js/script.js"></script>
+    <script src="js/maps.js"></script>
+    <!-- Google Maps API (replace YOUR_API_KEY with an actual Google Maps API key) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" defer></script>
 </body>
 </html>

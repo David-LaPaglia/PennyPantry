@@ -9,6 +9,12 @@
   --shadow: 0 2px 5px rgba(0,0,0,0.1);
   --border-radius: 10px;
   --font-family: 'Roboto', sans-serif;
+  --content-max-width: 1200px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 }
 
 * {
@@ -22,30 +28,36 @@ body {
   background-color: var(--light-gray);
   color: var(--text-color);
   line-height: 1.6;
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remove tap highlight on mobile */
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--spacing-md);
 }
 
 /* Header Styles */
 .header {
   background-color: var(--primary-color);
   color: white;
-  padding: 20px 0;
+  padding: var(--spacing-md) 0;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow);
+  width: 100%;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 var(--spacing-md);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
 }
 
 .app-title {
@@ -63,6 +75,7 @@ body {
   justify-content: center;
   color: var(--primary-color);
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Navigation Styles */
@@ -119,6 +132,9 @@ body {
   margin-top: 10px;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   box-shadow: var(--shadow);
+  position: sticky;
+  top: 70px; /* Position below header when scrolling */
+  z-index: 90;
 }
 
 .search-bar {
@@ -128,16 +144,21 @@ body {
   border-radius: 20px;
   padding: 8px 15px;
   position: relative;
+  height: 46px; /* Increased for better touch targets */
 }
 
 .search-icon {
   color: #888;
   margin-right: 10px;
+  font-size: 1.1rem; /* Larger for touch */
 }
 
 .voice-search {
   color: var(--primary-color);
   cursor: pointer;
+  padding: 8px; /* Larger touch target */
+  margin: -8px; /* Offset padding */
+  font-size: 1.1rem; /* Larger for touch */
 }
 
 .voice-search.pulsing {
@@ -298,10 +319,10 @@ body {
 
 .add-item {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
+  bottom: 80px; /* Moved up to not conflict with bottom nav on mobile */
+  right: 20px;
+  width: 56px;
+  height: 56px;
   background-color: var(--primary-color);
   color: white;
   border-radius: 50%;
@@ -311,6 +332,13 @@ body {
   font-size: 1.5rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   cursor: pointer;
+  z-index: 49;
+  transition: all 0.2s ease;
+}
+
+.add-item.pressed {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 /* Store Comparison Styles */
@@ -574,11 +602,72 @@ body {
 
 /* Store Locator Styles */
 .map-container {
-  height: 200px;
+  height: 250px;
   background-color: var(--light-gray);
   border-radius: var(--border-radius);
   margin-bottom: 20px;
   position: relative;
+  overflow: hidden;
+}
+
+#store-map {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.map-control-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.map-control-btn:active {
+  transform: scale(0.95);
+}
+
+.store-marker-content {
+  padding: 10px;
+  max-width: 200px;
+}
+
+.store-marker-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.store-marker-details {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.store-marker-action {
+  display: block;
+  padding: 5px 10px;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-top: 8px;
 }
 
 .map-placeholder {
@@ -991,26 +1080,43 @@ input:checked + .slider:before {
   background-color: white;
   display: flex;
   justify-content: space-around;
-  padding: 15px 0;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  padding: 12px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 50;
 }
 
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #999;
   text-decoration: none;
-  color: #666;
   font-size: 0.7rem;
+  transition: all 0.2s ease;
+  padding: 8px;
+  flex: 1;
+  text-align: center;
 }
 
 .nav-item i {
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .nav-item.active {
   color: var(--primary-color);
+  position: relative;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background-color: var(--primary-color);
 }
 
 .screen {
