@@ -477,7 +477,9 @@
         <!-- Store Locator Screen -->
         <main class="screen" id="store-locator-screen" role="main">
             <div class="map-container">
-                <div id="store-map"></div>
+                <div id="store-map">
+                    <div id="map" style="height: 400px; width: 100%;"></div>
+                </div>
                 <div class="map-controls">
                     <button id="use-my-location" class="map-control-btn" aria-label="Use my location">
                         <i class="fas fa-location-arrow" aria-hidden="true"></i>
@@ -644,6 +646,10 @@
     <script src="js/script.js"></script>
     <script src="js/maps.js"></script>
     <!-- Google Maps API (replace YOUR_API_KEY with an actual Google Maps API key) -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap" defer></script>
+    <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO982MjNDU4xakTdaObRYZF35IlvmvhmQ&callback=initializeGoogleMap&libraries=places"
+  async
+  defer
+></script>
 </body>
 </html>

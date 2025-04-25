@@ -3,10 +3,10 @@
  */
 
 // Initialize Google Maps when API is loaded
-function initMap() {
-    const mapElement = document.getElementById('store-map');
+function initializeGoogleMap() {
+    const mapElement = document.getElementById('map');
     if (!mapElement) return;
-    
+
     // Store locations data - replace with real data in production
     const storeLocations = [
         {
@@ -62,6 +62,7 @@ function initMap() {
             }
         ]
     });
+    window.map = map; // Optional: expose for debugging
     
     // Keep track of markers and info windows
     const markers = [];
